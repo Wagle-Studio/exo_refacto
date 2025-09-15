@@ -1,0 +1,60 @@
+<%- include("../partials/head", { title: "Accueil librairie 2" }) %>
+
+<main class="page">
+  <h1>Panier</h1>
+
+  <!-- Tableau récapitulatif par type -->
+  <h2>Détail par type</h2>
+  <table border="1" cellspacing="0" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Quantité</th>
+        <th>HT</th>
+        <th>TVA</th>
+        <th>TTC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% totals.lines.forEach(line => { %>
+      <tr>
+        <td><%= line.kind %></td>
+        <td><%= line.qty %></td>
+        <td><%= line.ht.toFixed(2) %></td>
+        <td><%= line.tva.toFixed(2) %></td>
+        <td><%= line.ttc.toFixed(2) %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <!-- Tableau des totaux -->
+  <h2>Totaux</h2>
+  <table border="1" cellspacing="0" cellpadding="6">
+    <tbody>
+      <tr>
+        <td>Sous-total HT</td>
+        <td><%= totals.subtotalHT.toFixed(2) %></td>
+      </tr>
+      <tr>
+        <td>Total TVA</td>
+        <td><%= totals.taxes.total.toFixed(2) %></td>
+      </tr>
+      <tr>
+        <td>Remises</td>
+        <td>
+          Bulk: <%= totals.discounts.bulk.toFixed(2) %> — Coupon: <%=
+          totals.discounts.coupon.toFixed(2) %>
+        </td>
+      </tr>
+      <tr>
+        <td>Frais de port</td>
+        <td><%= totals.shipping.toFixed(2) %></td>
+      </tr>
+      <tr>
+        <th>Total TTC</th>
+        <th><%= totals.totalTTC.toFixed(2) %></th>
+      </tr>
+    </tbody>
+  </table>
+</main>
