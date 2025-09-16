@@ -1,3 +1,7 @@
 import { Repository } from "../libs/Repository";
+import { Book } from "../models/Book";
 
-export class CategoryRepository extends Repository {}
+export class CategoryRepository extends Repository<any> {
+  protected tableName = "book" as const
+  protected fromRow = Book.fromRow
+}
