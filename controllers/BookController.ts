@@ -1,3 +1,4 @@
+import { Cart } from "../DTO/Cart";
 import { Controller } from "../libs/Controller";
 import { BookRepository } from "../repositories/BookRepository";
 
@@ -6,6 +7,9 @@ export class BookController extends Controller {
   public async browseBooks() {
     const repository = new BookRepository();
     const books = await repository.findAll();
+
+    const cart = new Cart();
+    cart.findItemByTitle("book", "osef");
 
     this.response.render("pages/books/browse.ejs", {
       books: books,

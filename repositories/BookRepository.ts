@@ -1,4 +1,3 @@
-// repositories/BookRepository.ts
 import { Repository } from "../libs/Repository"
 import { Book } from "../models/Book"
 

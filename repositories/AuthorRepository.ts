@@ -1,4 +1,3 @@
-// repositories/AuthorRepository.ts
 import { Repository } from "../libs/Repository"
 import { Author } from "../models/Author"
 
