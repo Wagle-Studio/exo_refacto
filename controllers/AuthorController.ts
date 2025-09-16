@@ -5,7 +5,7 @@ export class AuthorController extends Controller {
   // Route GET `/authors` - liste des auteurs
   public async browseAuthors() {
     const repository = new AuthorRepository();
-    const authors = await repository.findAllAuthors();
+    const authors = await repository.findAll();
 
     this.response.render("pages/authors/browse.ejs", {
       authors: authors,
